@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/Doca/css/login.css">
+        <title>Seja bem-vindo ao DO.CA</title>
+    </head>
+<body>
+    <header>
+    </header>
+    <main>
+        <div>
+            <img src="/Doca/img/logo/LOGO.png" alt="Logo" class="logo">
+            <h1>Seja bem-vindo ao D.O.C.A</h1> 
+            <h3>Fazer login</h3>
+            <!-- base para o login -->
+            <form method="post" action="envia.php">
+                <label form="Nome"> Nome de usuário</label>
+                <input type="text" id="nome de usuário" size="60" name="nome de usuário" maxlength="100"> <br>
+            </form>    
+            <form method="post" action="envia.php">
+                <label form="Senha"> Senha </label>
+                <input type="text" id="Senha" name="Senha"> <br>
+            </form>   
+            <a class="esqueciminhasenha" href="#">Esqueci minha senha </a>
+            <a href="/Doca/dados.html" class="btn"><button type="button" class="cadastro" > Login </button></a>
+
+            <div class="ou">
+                <img src="" alt="" srcset="">
+                    <span class="texto">
+                        ou
+                    </span>
+                <img class="" alt="" srcset="">
+            </div>
+            <p class="Façaseucadastro" não possui conta?> 
+                <a href="/Doca/cadastro.html" class="fazercadastro"> Faça seu cadastro </a>
+            </p>
+        </div>
+    </main>
+    <script src="/javascript/login.js"></script>
+    <!-- <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('Nome de usuário').value;
+            const senha = document.getElementById('senha').value;
+
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, senha })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Login realizado com sucesso');
+                localStorage.setItem('token', data.token);
+                window.location.href = '/home.html';
+            } else {
+                alert('Erro: ' + (data.message || 'Falha no login'));
+            }
+        });
+    </script> -->
+
+</body>
+
