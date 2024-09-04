@@ -1,7 +1,7 @@
 CREATE DATABASE doca_db;
 USE doca_db;
 
--- Tabela para usuários
+
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE usuarios (
     senha VARCHAR(255) NOT NULL
 );
 
--- Tabela para pets
+
 CREATE TABLE pets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE pets (
     FOREIGN KEY (tutor_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Tabela para lugares favoritos
+
 CREATE TABLE favoritos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE favoritos (
     FOREIGN KEY (tutor_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Tabela para dados diários
+
 CREATE TABLE dados_diarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE dados_diarios (
     FOREIGN KEY (tutor_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Tabela para dados mensais
+
 CREATE TABLE dados_mensais (
     id INT AUTO_INCREMENT PRIMARY KEY,
     mes VARCHAR(20) NOT NULL,

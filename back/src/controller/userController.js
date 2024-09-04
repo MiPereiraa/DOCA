@@ -1,15 +1,16 @@
 const connection = require('../config/db.js');
 const dotenv = require('dotenv').config();
-async function storeUser(request, response) {
-    console.log("Dados recebidos no servidor:", request.body); // Adicione esta linha
 
-    const params = [
+async function storeUser(request, response) {
+
+    console.log("Dados recebidos no servidor:", request.body); 
+    const params = Array(
         request.body.nome,
         request.body.sobrenome,
         request.body.telefone,
         request.body.email,
         request.body.senha,
-    ];
+    );
 
     const query = 'INSERT INTO usuarios (nome, sobrenome, telefone, email, senha) VALUES (?, ?, ?, ?, ?)';
 
