@@ -1,42 +1,20 @@
-const connection = require('../config/db.js');
+const mysql = require('mysql2');
 const dotenv = require('dotenv').config();
- 
-async function storeUser(request, response){
-    const params = Array(
-        request.body.nome,
-        request.body.email,
-        request.body.senha,
-        request.body.tipo_usuario,
-        request.body.endereco,
-    );
- 
- 
-    const query = 'INSERT INTO cadastro_usuario(nome, email, senha, tipo_usuario, endereco) VALUES (?, ?, ?, ?, ? )';
- 
-    connection.query(query, params, (err, results) => {
-        console.log(err)
-        if (results) {
-            response
-                .status(201)
-                .json({
-                    success: true,
-                    massage: "Sucesso!",
-                    data: results
-                })
-           
-        }else{
-            response
-                .status(400)
-                .json({
-                    success: false,
-                    message: "Ops, deu problema :(",
-                    data: err
-                })
-        }
-    })
-}
- 
- 
-module.exports = {
-    storeUser
-}
+
+const connection = mysql.createConnection({
+    host: process.env.db_host,
+    user: process.env.db_user,
+    password: process.env.db_password,
+    database: process.env.db_database,
+
+})
+
+connection.connect(function (err) {
+    if (err) {
+        throw err;
+    } else{
+        console.log("Mysql connected!");
+    }    
+});
+
+module.exports = connection;

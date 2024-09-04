@@ -1,39 +1,39 @@
 const connection = require('../config/db.js');
 const dotenv = require('dotenv').config();
+async function storeUser(request, response) {
+    console.log("Dados recebidos no servidor:", request.body); // Adicione esta linha
 
-async function storeUser(request, response){
-    const params = Array(
+    const params = [
         request.body.nome,
         request.body.sobrenome,
         request.body.telefone,
         request.body.email,
         request.body.senha,
-    );
+    ];
 
-
-    const query = 'INSERT INTO usuario (nome, sobrenome, telefone, email, senha) VALUES (?, ?, ?, ?, ? )';
+    const query = 'INSERT INTO usuarios (nome, sobrenome, telefone, email, senha) VALUES (?, ?, ?, ?, ?)';
 
     connection.query(query, params, (err, results) => {
-        console.log(err)
-        if (results) {
-            response 
-                .status(201)
-                .json({
-                    success: true,
-                    massage: "Sucesso!",
-                    data: results
-                })
-            
-        }else{
+        if (err) {
+            console.error("Erro no banco de dados:", err);
             response
                 .status(400)
                 .json({
                     success: false,
-                    message: "Ops, deu problema :(",
+                    message: "Erro ao cadastrar. Verifique os dados inseridos.",
                     data: err
-                })
+                });
+            return;
         }
-    })
+
+        response
+            .status(201)
+            .json({
+                success: true,
+                message: "Sucesso!",
+                data: results
+            });
+    });
 }
 
 module.exports = {
