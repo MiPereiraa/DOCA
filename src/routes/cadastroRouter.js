@@ -1,10 +1,8 @@
 // Importa a função Router do Express, que permite criar rotas modulares e separadas para a aplicação
 const { Router } = require('express');
 const { storeUser } = require('../controller/cadastroController');
-//const { taskCadastro } = require('../controller/cadastroController')
 const router = Router();
 
-router.post('/store/user', storeUser);
 
 
 /**
@@ -22,6 +20,6 @@ router.post('/store/user', storeUser);
  *              items:
  *                type: object
 */
-//router.post('/post/cadastro', taskCadastro);
+router.post('/store/user', storeUser);
 
 module.exports = router;

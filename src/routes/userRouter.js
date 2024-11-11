@@ -1,7 +1,7 @@
-const {Router} = require('express')
-const userRouter = Router();
+// const {Router} = require('express')
+// const userRouter = Router();
 
-const { storeUser } = require('../controller/userController');
+// const { storeUser } = require('../controller/userController');
 
 
 /**
@@ -19,6 +19,6 @@ const { storeUser } = require('../controller/userController');
  *                    items:
  *                       type: object
  */
-userRouter.post('/store/user', storeUser);
+//userRouter.post('/store/user', storeUser);
 
-module.exports = userRouter
+//module.exports = userRouter

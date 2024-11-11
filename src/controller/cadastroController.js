@@ -13,12 +13,12 @@ async function storeUser(request, response) {
         request.body.nome,             
         request.body.sobrenome,   
         request.body.telefone,            
-        request.body.e-mail,            
+        request.body.email,            
         request.body.senha,
     );
 
     // Query SQL para inserir um novo registro na tabela 'usuario'
-    const query = 'INSERT INTO usuario(nome, sobrenome, telefone, e-mail, senha) VALUES (?, ?, ?, ?, ?)';
+    const query = 'INSERT INTO usuarios(nome, sobrenome, telefone, email, senha) VALUES (?, ?, ?, ?, ?)';
 
     // Executa a query SQL com os parâmetros fornecidos
     connection.query(query, params, (err, results) => {
