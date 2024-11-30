@@ -1,3 +1,14 @@
+const express = require('express');
+const router = express.Router();
+const userController = require('../controller/userController');
+
+// Rota para cadastro de usuário
+router.post('/users', userController.createUser);
+
+module.exports = router;
+
+
+
 // const {Router} = require('express')
 // const userRouter = Router();
 

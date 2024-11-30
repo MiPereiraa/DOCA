@@ -6,7 +6,6 @@ const connection = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-
 })
 
 connection.connect(function (err) {
@@ -15,6 +14,6 @@ connection.connect(function (err) {
     } else{
         console.log("Mysql connected!");
     }    
-});
+})
 
 module.exports = connection;

@@ -1,42 +1,20 @@
-const connection = require('../config/db.js');
-const dotenv = require('dotenv').config();
+// const User = require('../models/User');
 
-async function storeUser(request, response) {
+// exports.createUser = async (req, res) => {
+//   try {
+//     const { name, sobrenome, telefone, email, password } = req.body;
 
-    console.log("Dados recebidos no servidor:", request.body); 
-    const params = Array(
-        request.body.nome,
-        request.body.sobrenome,
-        request.body.telefone,
-        request.body.email,
-        request.body.senha,
-    );
+//     // Validação básica
+//     if (!name || !sobrenome || !telefone || !email || !password) {
+//       return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
+//     }
 
-    const query = 'INSERT INTO usuarios (nome, sobrenome, telefone, email, senha) VALUES (?, ?, ?, ?, ?)';
+//     const newUser = new User({ name, telefone, sobrenome, email, password });
+//     await newUser.save();
 
-    connection.query(query, params, (err, results) => {
-        if (err) {
-            console.error("Erro no banco de dados:", err);
-            response
-                .status(400)
-                .json({
-                    success: false,
-                    message: "Erro ao cadastrar. Verifique os dados inseridos.",
-                    data: err
-                });
-            return;
-        }
-
-        response
-            .status(201)
-            .json({
-                success: true,
-                message: "Sucesso!",
-                data: results
-            });
-    });
-}
-
-module.exports = {
-    storeUser
-}
+//     res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
+//   } catch (error) {
+//     console.error('Erro ao cadastrar usuário:', error);
+//     res.status(500).json({ message: 'Erro ao cadastrar usuário' });
+//   }
+// };
